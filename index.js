@@ -196,18 +196,16 @@ async function startnigg(phone) {
           console.log('Gist success:', sessi);
 
           // 🔹 Send the session ID message
-          try {
+          // 🔹 Send the session ID message
+try {
   const userId = negga.user.id;
 
-  // Send session ID
   const guru = await negga.sendMessage(userId, {
     text: sessi,
   });
 
-  // Wait 2 seconds
   await new Promise(resolve => setTimeout(resolve, 2000));
 
-  // Main message
   const message = `*YOU HAVE SUCCESSFULLY CONNECTED TO LUMINA_XMD* 👾🖤
 
 > 🔴 ⚠️ *THAT IS THE SESSION ID ABOVE 👆!* ⚠️
@@ -219,7 +217,7 @@ async function startnigg(phone) {
 (_link unavailable_)
 
 🚀 *Deployment Guides Available For:* Panel | Heroku | Render | Koyeb
-BOT LINK: (_link unavailable_)
+BOT LINK: https://patron-md.vercel.app
 
 🛠️ *Troubleshooting:*  
 ❌ Bot connected but not responding?  
@@ -233,6 +231,10 @@ Contact KynexorTechnologies Team: +27731881979`;
     { text: message },
     { quoted: guru }
   );
+
+} catch (err) {
+  console.error('Error sending session message:', err);
+}
 
           // 🔹 Join group
           try {
