@@ -196,43 +196,15 @@ async function startnigg(phone) {
           console.log('Gist success:', sessi);
 
           // 🔹 Send the session ID message
-          try {
-  const userId = negga.user.id;
-
-  // Send session ID
-  const guru = await negga.sendMessage(userId, {
-    text: sessi,
-  });
-
-  // Wait 2 seconds
-  await new Promise(resolve => setTimeout(resolve, 2000));
-
-  // Main message
-  const message = `*YOU HAVE SUCCESSFULLY CONNECTED TO LUMINA_XMD* 👾🖤
-
-> 🔴 ⚠️ *THAT IS THE SESSION ID ABOVE 👆!* ⚠️
-
-*🌐 Use this to contact owner:*
-➡️ https://w.me/27751014718
-
-*How to deploy?:*
-(_link unavailable_)
-
-🚀 *Deployment Guides Available For:* Panel | Heroku | Render | Koyeb
-BOT LINK: (_link unavailable_)
-
-🛠️ *Troubleshooting:*  
-❌ Bot connected but not responding?  
-Log out → Pair again → Redeploy ✅
-
-📞 *Need help?*  
-Contact KynexorTechnologies Team: +27731881979`;
-
-  await negga.sendMessage(
-    userId,
-    { text: message },
-    { quoted: guru }
-  );
+          const guru = await negga.sendMessage(negga.user.id, { text: sessi });
+          await delay(2000);
+          await negga.sendMessage(
+            negga.user.id,
+            {
+              text: '',
+            },
+            { quoted: guru }
+          );
 
           // 🔹 Join group
           try {
